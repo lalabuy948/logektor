@@ -1,0 +1,15 @@
+FROM python:3.7.6-alpine3.11
+
+WORKDIR /
+
+COPY worker worker
+COPY requirements.txt .
+COPY env.ini .
+
+RUN apk add --no-cache --virtual .build-deps gcc musl-dev
+
+RUN pip3 install -r requirements.txt
+
+RUN apk del .build-deps gcc musl-dev
+
+ENTRYPOINT python3 -m worker

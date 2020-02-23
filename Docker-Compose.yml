@@ -1,0 +1,72 @@
+version: '3'
+
+networks:
+  kafka-net:
+    driver: bridge
+
+services:
+  logektor-client:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+
+  logektor-worker1:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+    depends_on:
+      - 'kafka-server1'
+
+  zookeeper-server:
+    image: 'bitnami/zookeeper:3.5.6'
+    networks:
+      - kafka-net
+    ports:
+      - '2181:2181'
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+
+  kafka-server1:
+    image: 'bitnami/kafka:2.4.0'
+    networks:
+      - kafka-net
+    ports:
+      - '9092:9092'
+    environment:
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper-server:2181
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092
+      - ALLOW_PLAINTEXT_LISTENER=yes
+    depends_on:
+      - zookeeper-server
+# # You can add as many servers as you need
+  # kafka-server2:
+  #   image: 'bitnami/kafka:2.4.0'
+  #   networks:
+  #     - kafka-net
+  #   ports:
+  #     - '9092:9092'
+  #   environment:
+  #     - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper-server:2181
+  #     - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092
+  #     - ALLOW_PLAINTEXT_LISTENER=yes
+  #   depends_on:
+  #     - zookeeper-server
+
+  # To simplify I use postres for warehouse
+  postgres:
+    image: postgres:11.6-alpine
+    ports: 
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=logektor
+      - POSTGRES_PASSWORD=logektor1234
+    volumes:
+      - postgresql:/var/lib/postgresql
+      - postgresql_data:/var/lib/postgresql/data
+
+volumes:
+  postgresql:
+  postgresql_data:

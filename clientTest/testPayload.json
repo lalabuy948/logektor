@@ -1,0 +1,8 @@
+{
+	"objectId" : 2,
+	"objectType": "user",
+	"action" : "view",
+	"subjectId" : 2,
+	"subjectType" : "article",
+	"datetimeStamp" : 123
+}

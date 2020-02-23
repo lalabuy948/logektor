@@ -1,0 +1,20 @@
+# Editors trash
+.vscode
+.idea
+
+# MacOS trash
+*.DS_Store
+
+# Python trash
+pypyenv/
+venv/
+*__pycache__
+app/__pycache__
+*.pyc
+
+# Hot
+env.ini
+
+main
+
+*.log
