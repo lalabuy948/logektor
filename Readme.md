@@ -11,13 +11,9 @@ System with high availability to store events/logs.
 
 ## Architecture
 
-Single app 
+Single app & SOA
 
 ![SA](github/EventTrackingSA.svg)
-
-SOA
-
-![SOA](github/EventTrackingSOA.svg)
 
 ## Setup
 
