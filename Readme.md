@@ -3,18 +3,10 @@
 <h1 align="center">Logektor ⚡️</h1>
 
 <p align="center">
-  <a href="https://goreportcard.com/report/github.com/lalabuy948/logektor">
-    <img src="https://goreportcard.com/badge/github.com/lalabuy948/logektor"/>
-  </a>
-
-  <a href="/go.mod">
-    <img src="https://img.shields.io/github/go-mod/go-version/lalabuy948/logektor"/>
-  </a>
-
+  <a href="https://goreportcard.com/report/github.com/lalabuy948/logektor"><img src="https://goreportcard.com/badge/github.com/lalabuy948/logektor"/></a>
+  <a href="/go.mod"><img src="https://img.shields.io/github/go-mod/go-version/lalabuy948/logektor"/></a>
   <a href="https://docs.python.org/3/index.html"><img src="https://img.shields.io/badge/python-3.7.6-blue.svg"/></a>
-
   <a href="/LICENCE"><img src="https://img.shields.io/badge/licence-ccpl-green"/></a>
-
 </p>
 
 <p align="center">
