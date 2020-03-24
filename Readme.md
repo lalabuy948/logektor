@@ -1,5 +1,7 @@
 # Logektor ⚡️
 
+[![Go Report Card](https://goreportcard.com/badge/github.com/lalabuy948/logektor)](https://goreportcard.com/report/github.com/lalabuy948/logektor)
+
 System with high availability to store events/logs.
 
 ## Stack
