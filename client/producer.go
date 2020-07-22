@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	kafka "github.com/segmentio/kafka-go"
+	"github.com/segmentio/kafka-go"
 	"gopkg.in/ini.v1"
 )
 
@@ -54,7 +54,7 @@ func track(rawEvent []byte) error {
 
 	msg := kafka.Message{
 		Key:   []byte(fmt.Sprint("event")),
-		Value: []byte(rawEvent),
+		Value: rawEvent,
 	}
 
 	err = writer.WriteMessages(context.Background(), msg)

@@ -22,9 +22,9 @@ func trackHandler(ctx *fasthttp.RequestCtx) {
 
 	err := track(ctx.PostBody())
 	if err != nil {
-		fmt.Sprint(err)
+		fmt.Println(err)
 		ctx.Response.SetStatusCode(fasthttp.StatusBadRequest)
-		// this can be more descriptive, depends how much you want to expose to production
+		// this can be more descriptive
 		ctx.Response.SetBody([]byte(fmt.Sprint("Пук серк")))
 	} else {
 		ctx.Response.SetStatusCode(fasthttp.StatusAccepted)
@@ -34,7 +34,10 @@ func trackHandler(ctx *fasthttp.RequestCtx) {
 func main() {
 	flag.Parse()
 
-	initProducer()
+	err := initProducer()
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	requestHandler := func(ctx *fasthttp.RequestCtx) {
 		switch string(ctx.Path()) {
