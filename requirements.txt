@@ -1,2 +1,2 @@
-asyncpg==0.20.1
+asyncpg==0.21.0
 kafka-python==2.0.1
